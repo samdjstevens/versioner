@@ -31,3 +31,8 @@ func getLatestVersionFromGit() (Version, error) {
 
 	return version, nil
 }
+
+// use git to add a tag with a version
+func setVersion(version Version) error {
+	return exec.Command("sh", "-c", "git tag " + version.toString(false)).Run()
+}
