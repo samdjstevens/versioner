@@ -43,6 +43,18 @@ func showInfo() {
 
 // show the latest/current tag
 func latest() {
+	// get the latest version
+	version, err := getLatestVersionFromGit()
+
+	// could not get the current version, output the error
+	if err != nil {
+		RedLn("Error! " + err.Error())
+		return
+	}
+
+	// print it to the screen
+	fmt.Print("The latest version is ")
+	GreenLn(version.toString(false))
 }
 
 // bump up the latest/current version
